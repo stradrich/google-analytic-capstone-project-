@@ -1,0 +1,475 @@
+---
+title: 'Google Analytic: Cyclistic'
+author: "Aldrich Pinso"
+date: "2022-10-22"
+output:
+  html_document
+---
+
+
+
+# ASK
+
+## Introduction
+This is part of Google Data Analytics capstone project, sponsored by *Grow with Google Malaysia*. By solving real life situation, I'm able to experience the work of a data analyst and at the same time building a career portfolio.
+
+In this case study, we need to answer business questions posed by Cyclistic bike-share company. I'm assigned to work with the director of marketing and analytics, Lily Moreno and Cyclistic marketing analytics team. To confirm Madam Moreno's hypothesis, which is to maximize the number of annual membership, more data driven insights are required. A new design for marketing strategy, which is to convert casual riders into annual memberships, can only commence after achieving positive approval by Cyclisitc executives team.
+
+As of 2016, Cyclistic bike-share program features more than 5,824 bicycles and 692 docking station, we are able to accurately pinpoint these fleet of asset with geotracking devices, it comes with different types of bike, reclining bikes, hand tricycles, and cargo bikes, offering better quality of life to the people in Chicago city.
+
+Backed by Cyclistic's finance analyst, annual members are more profitable than casual rides. Currently, its pricing flexibility helps Cyclisitc to attract more customers, however for future growth, Madam Moreno believes in maximising existing casual riders which is fammiliar with the program that full fill their mobility needs. 
+
+## Asking the right questions:
+* Who are the controlled group?
+* What is profitable and what isn't?
+* How to convert casual riders into signing up as member?
+* What is the future growth of Cyclistics bike-share?
+
+# PREPARE
+Read and understand the terms and condition from the provided  [Divvy Bike Data License Agreement](https://ride.divvybikes.com/data-license-agreement)
+
+### Set up environment: Data uploading
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("lubridate")
+library(lubridate)
+install.packages("readr")
+library(readr)
+install.packages("rmarkdown")
+install.packages("knitr")
+
+### Upload relevant raw data from Cyclistic bike-share provided by Divvy Bikes. 
+
+Data is split into pre-pandemic (2014-2018); pandemic (2019); towards post-pandemic (2020-present). By looking at the historical data in this way, it makes more sense to me, because we get to compare the impact of such crisis.
+
+Please note that this timeline is just a reference. WHO hasn't publicly announced the end of Covid-19 pandemic, although most countries are vaccinated now and people start moving freely again.
+
+Due to time constraint and minimizing the chances of data overloading and crashing, I will only analyse the year of 2020.
+
+```{r ## 2020 (12 months worth of data)}
+Q1_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/Divvy_Trips_2020_Q1.csv")
+Q2_APR_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202004-divvy-tripdata.csv")
+Q2_MAY_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202005-divvy-tripdata.csv")
+Q2_JUN_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202006-divvy-tripdata.csv")
+Q3_JUL_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202007-divvy-tripdata.csv")
+Q3_AUG_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202008-divvy-tripdata.csv")
+Q3_SEP_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202009-divvy-tripdata.csv")
+Q4_OCT_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202010-divvy-tripdata.csv")
+Q4_NOV_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202011-divvy-tripdata.csv")
+Q4_DEC_2020 <- read.csv("/Volumes/UDISK/Google Analytics Track 1/2013-2022/2020/202012-divvy-tripdata.csv")
+```
+
+# PROCESS
+
+I have chosen R programming as my main tool for many reasons. Personally, I'd love to be able to go into Data Science area, other than python, R is more intuitive to code and decipher complexity. For this case study, I want to avoid data overloading and crashing, R can handle that swiftly. I will also use SQL to confirm some of my findings here.  
+
+In this section, I will merge data, change data type, create new columns, etc.
+
+This is part of my workflow. I will be displaying the data types and internal structure as a reference to identify anomalies or commonalities vice versa. 
+
+### Set up environment: Data structures & Data types
+install.packages("here")
+library("here")
+install.packages("skimr")
+library("skimr")
+install.packages("dplyr")
+library("dplyr")
+install.packages("tibble")
+library(tibble)
+
+Types of data: 
+* characters
+* numeric
+* integer
+* complex
+* logical
+
+Data Structures: 
+* vector
+* list 
+* matrix
+* data frame
+* array
+* factor
+
+Object with different atrributes:
+* name
+* dimension
+* class
+
+## Data processing
+```{r ## Check and glance through data frames}
+str(Q1_2020)
+str(Q2_APR_2020)
+str(Q2_MAY_2020)
+str(Q2_JUN_2020) 
+str(Q3_JUL_2020)
+str(Q3_AUG_2020)
+str(Q3_SEP_2020) 
+str(Q4_OCT_2020)
+str(Q4_NOV_2020) 
+str(Q4_DEC_2020)
+```
+
+```{r ## Check and glance through column names}
+colnames(Q1_2020) 
+colnames(Q2_APR_2020)
+colnames(Q2_MAY_2020)
+colnames(Q2_JUN_2020) 
+colnames(Q3_JUL_2020)
+colnames(Q3_AUG_2020)
+colnames(Q3_SEP_2020) 
+colnames(Q4_OCT_2020)
+colnames(Q4_NOV_2020) 
+colnames(Q4_DEC_2020)
+```
+
+```{r ## More Data Summary}
+head(Q1_2020)
+head(Q2_APR_2020)
+head(Q2_MAY_2020)
+head(Q2_JUN_2020) 
+head(Q3_JUL_2020)
+head(Q3_AUG_2020)
+head(Q3_SEP_2020) 
+head(Q4_OCT_2020)
+head(Q4_NOV_2020) 
+head(Q4_DEC_2020)
+```
+
+### Set up environment: Data Cleaning
+install.packages("tidyr")
+library(tidyr)
+install.packages("janitor")
+library("janitor")
+
+```{r ## Make sure columns are named the same.}
+colnames(Q1_2020) == colnames(Q2_APR_2020)
+colnames(Q2_APR_2020) == colnames(Q2_MAY_2020)
+colnames(Q2_MAY_2020) == colnames(Q2_JUN_2020)
+colnames(Q2_JUN_2020) == colnames(Q3_JUL_2020)
+colnames(Q3_JUL_2020) == colnames(Q3_AUG_2020)
+colnames(Q3_AUG_2020) == colnames(Q3_SEP_2020)
+colnames(Q3_SEP_2020) == colnames(Q4_OCT_2020)
+colnames(Q4_OCT_2020) == colnames(Q4_NOV_2020)
+colnames(Q4_NOV_2020) == colnames(Q4_DEC_2020)
+colnames(Q4_DEC_2020) == colnames(Q1_2020)
+```
+## Data Validation: 
+* double checked: data frame [ALL SAME FORMAT],
+* double checked: colnames(abc) == colnames(xyz) [ALL RETURN TRUE; no anomalies in the column],
+* double checked: rename() [NOT REQUIRED]
+
+
+In case of data type compatibleness, use this code:  xyz <- mutate() {xyz, abc =as.integer(abc), def = as.characthers(def)
+
+### Make sure data types are the same before merging data.
+compare_df_cols(Q1_2020,
+                Q2_APR_2020,
+                Q2_MAY_2020,
+                Q2_JUN_2020,
+                Q3_JUL_2020,
+                Q3_AUG_2020,
+                Q3_SEP_2020,
+                Q4_OCT_2020,
+                Q4_NOV_2020,
+                Q4_DEC_2020)
+
+* double checked: datatypes; mutate() [NOT REQUIRED], data is good for merging.
+
+### Merge Data for 2020 (12 files in total) into one data set
+Q1234_2020 <- rbind(Q1_2020,
+                    Q2_APR_2020,
+                    Q2_MAY_2020,
+                    Q2_JUN_2020,
+                    Q3_JUL_2020,
+                    Q3_AUG_2020,
+                    Q3_SEP_2020,
+                    Q4_OCT_2020,
+                    Q4_NOV_2020,
+                    Q4_DEC_2020)
+                    
+View(Q1234_2020)
+
+
+
+Integration successful!
+
+What else is needed to answer our analysis?
+To answer time related concern, started_at and ended_at is currently "chr". Clearly, Date-Time format is vital, a conversion is needed for further calculation.
+
+### Set up environment: Data Cleaning: R Date-Time format
+install.packages("lubridate")
+library(lubridate)
+
+Q1234_2020$started_at <- as_datetime(Q1234_2020$started_at)
+Q1234_2020$ended_at <- as_datetime(Q1234_2020$ended_at)
+
+#### How to find the order of days in a week on R?
+Q1234_2020$date_weekday <- ordered(Q1234_2020$date_weekday, level=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+
+Q1234_2020  %>%
+  mutate(weekday = wday(started_at,label = TRUE)) %>%
+  group_by(member_casual, weekday) %>%
+  arrange(member_casual,weekday)
+
+date_dayname <- data.frame(date = as.Date(c("2020-01-01","2020-01-02",
+                                            "2020-01-03","2020-01-04"))+1, "%A")
+weekday <- weekdays(date_dayname$date)                
+print(weekday)
+
+Q1234_2020  %>%
+  mutate(weekday = wday(started_at,label = TRUE)) %>%
+  group_by(member_casual, weekday) %>%
+  arrange(member_casual,weekday)
+
+Q1234_2020$date <- as.Date(Q1234_2020$started_at)
+#Q1234_2020$year <- format(as.Date(Q1234_2020$date),"%Y")
+#Q1234_2020$month <- format(as.Date(Q1234_2020$date),"%m")
+#Q1234_2020$day <- format(as.Date(Q1234_2020$date),"%d")
+Q1234_2020$week_name <- format(as.Date(Q1234_2020$started_at),"%A")
+
+View(Q1234_2020)
+
+##Check date vs week days Sunday = 1
+
+* wday(ymd("2019-12-29"))  Sunday = 1
+
+* wday(ymd("2019-12-30")) Monday  = 2
+
+* wday(ymd("2019-12-31")) Tuesday = 3
+
+* wday(ymd("2020-01-01")) Wednesday = 4
+
+* wday(ymd("2020-01-02")) Thursday = 5
+
+* wday(ymd("2020-01-03")) Friday = 6
+
+* wday(ymd("2020-01-04")) Saturday = 7
+
+* wday(ymd("2020-01-21")) Code = 3, therefore it's Tuesday!
+
+* yday("2020-12-31") Which day in 2020?
+
+# ANALYZE
+### Overall population stastistic (such as mean, midpoint, average, min, max)
+* nrow(Q1234_2020) # Rough total Population
+* dim(Q1234_2020)
+* head(Q1234_2020)
+* tail(Q1234_2020)
+* summary(Q1234_2020) # Show total population (Need further calculation!)
+
+Check duration of rides data type before calculation, change its data type from "chr" into "numeric" to ease calculation.
+Q1234_2020$ride_duration_s <- difftime(Q1234_2020$ended_at, Q1234_2020$started_at) # in seconds!
+
+Q1234_2020$ride_duration_s <- as.numeric(as.character(Q1234_2020$ride_duration_s)) # change "chr" to "num"
+is.numeric(Q1234_2020$ride_duration_s) #logical query, should return TRUE to validate we've succesfully change the data types.
+
+### Remove unnecessary data columns for further analysis: start_lat, start_lng, end_lat, end_lng
+* Q1234_2020_cleaned1 <- Q1234_2020[!(Q1234_2020$ride_duration_s <=0),] # Remove 0 or NIL seconds data, probably some failed rides, could be used in the future.
+* Q1234_2020_cleaned1 <- na.omit(Q1234_2020_cleaned1) # Remove potential NA values
+* Q1234_2020_cleaned1 <- Q1234_2020_cleaned1 %>%  distinct() # Remove potential duplicates
+* Q1234_2020_cleaned1 <- Q1234_2020_cleaned1 %>% filter(!(is.na(start_station_name) | start_station_name == "")) %>%  filter(!(is.na(end_station_name) | end_station_name == "")) # Remove blank results
+* Q1234_2020_cleaned1 <- Q1234_2020 %>% select(-c(start_lat, start_lng, end_lat, end_lng) #latitude and longitude might be helpful to plot data onto a map, i.e pin location of stations, and probably use different color to show it's frequency. 
+* str(Q1234_2020_cleaned1)
+
+### Arrange cleaned data according to dates
+Q1234_2020_cleaned1$started_at <- as.POSIXct(Q1234_2020_cleaned1$started_at , format = "%m/%d/%Y %I:%M:%S %p" , tz = "GMT")
+class(Q1234_2020_cleaned1$started_at)
+Q1234_2020_cleaned1 <- Q1234_2020_cleaned1[do.call(order, Q1234_2020_cleaned1), ]
+                              
+### Total population (calculate mean, midpoint, average, min, max)
+nrow(Q1234_2020_cleaned1)
+Q1234_2020_cleaned1 %>%  group_by(member_casual) %>%  summarise(ride_freq = length(ride_id))
+
+Q1234_2020_cleaned1 <- Q1234_2020_cleaned1 %>% select(-c(start_lat, start_lng, end_lat, end_lng)
+str(Q1234_2020_cleaned1)
+View(Q1234_2020_cleaned1)
+
+### Ride duration statistics
+#### Total riding duration
+* sum(Q1234_2020_cleaned1$ride_duration_s)
+#### Mean
+* mean(Q1234_2020_cleaned1$ride_duration_s)
+#### Midpoint
+* median(Q1234_2020_cleaned1$ride_duration_s)
+#### Longest ride
+* max(Q1234_2020_cleaned1$ride_duration_s)
+#### Shortest ride
+* min(Q1234_2020_cleaned1$ride_duration_s) #Why is this happening?
+#### Standard Deviation
+* sd(Q1234_2020_cleaned1$ride_duration_s)
+#### Variance
+* var(Q1234_2020_cleaned1$ride_duration_s)
+### Riding duration by type of customer
+* setNames(aggregate(ride_duration_s ~ member_casual,Q1234_2020_cleaned1, sum), c("customer_type","ride_duration_s")) # Casual riders more than member!!!! Almost doubled!
+
+### Rideable type statistic
+#### Rideable type population
+* table(Q1234_2020_cleaned1$rideable_type) # Docked > Electric > Classic
+#### Customer rideable preferences
+* str(Q1234_2020_cleaned1)
+
+From here, we can also see the bike preferences for both member and casual riders.
+#### Change rideable type from "num"to "chr"
+* Q1234_2020_cleaned1 %>% group_by(Q1234_2020_cleaned1$member_casual) %>% count(Q1234_2020_cleaned1$rideable_type)
+
+#### Find the population for members (calculate mean, midpoint, average, min, max)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual, FUN = sum)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual,FUN = mean)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual,FUN = median)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual,FUN = max)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual,FUN = min)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual,FUN = sd)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual,FUN = var)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual,FUN = range)
+* aggregate(Q1234_2020_cleaned1$ride_duration_s ~ Q1234_2020_cleaned1$member_casual,FUN = quantile)
+
+Q1234_2020_cleaned1 %>%
+  group_by(ride_duration_s) %>%
+  summarize(sum = sum(ride_duration_s, na.rm = TRUE),
+  mean = mean(ride_duration_s, na.rm = TRUE),
+  median = median(ride_duration_s, na.rm = TRUE),
+  max = max(ride_duration_s, na.rm = TRUE),
+  min = min(ride_duration_s, na.rm = TRUE),
+  sd = sd(ride_duration_s, na.rm = TRUE),
+  var = var(ride_duration_s, na.rm = TRUE),
+  range = diff(range(ride_duration_s, na.rm = TRUE)),
+  quantile = list(quantile(ride_duration_s, probs = seq(.1, 1, by = .1),   na.rm = TRUE))) %>%
+  unnest_wider(quantile)
+ 
+#### Find the population for casuals (calculate mean, midpoint, average, min, max)
+* mean(3732614925/2)
+* median((3732614925+1952034518)/2)
+
+# SHARE
+### Set up environment: Data Visualization
+install.packages("ggplot2")
+library(ggplot2)
+install.packages("lubridate")
+library(lubridate)
+install.packages("ggrepel")
+library(ggrepel)
+installed.packages("rmarkdown")
+
+### Plot distribution total population (Membership VS Casual)
+Q1234_2020_cleaned1 %>%
+  group_by(member_casual) %>%
+  summarise(ride_freq = length(ride_id)) %>%
+  arrange(member_casual) %>%
+  ggplot(aes(x=member_casual,y=ride_freq,fill=member_casual)) +
+  labs(title ="Members VS Casual Population")
+
+ggplot(data = Q1234_2020_cleaned1) +
+  geom_bar(mapping=aes(x=member_casual,fill=member_casual)) +
+  labs(title = "Members VS Casual Population") +
+  facet_wrap(~rideable_type)
+  
+![Plot Member Vs Casual Population](/Volumes/UDISK/2020 R/Rplot.png)
+
+### Casual VS Member weekly bike usage
+Q1234_2020_cleaned1 %>%
+  group_by(member_casual, week_name) %>%
+  summarise(ride_freq = n()) %>%
+  arrange(member_casual, week_name) %>%
+  ggplot(mapping = aes(x = factor(week_name, c("Sunday", "Monday", "Tuesday", "Wednesday","Thursday","Friday", "Saturday")) , y=ride_freq, fill=member_casual)) +
+  labs(title ="Customer (Casual Vs Member) weekly bike usage", x="Day of the week", y="number of trips", fill="Customer type") +
+  geom_col(width = 0.8, position = position_dodge(width=0.5)) +
+  scale_x_discrete(guide = guide_axis(n.dodge=2))
+  
+![Plot Customer(Casual VS Member) weekly bike usage](/Volumes/UDISK/2020 R/Rplot01.png)
+
+### Casual VS Member monthly bike usage
+Q1234_2020_cleaned1 %>%
+  group_by(member_casual, date) %>%
+  summarise(ride_freq = n()) %>%
+  arrange(member_casual, date) %>%
+  ggplot(mapping = aes(x = date, y=ride_freq, fill=member_casual)) +
+  labs(title ="Customer (Casual Vs Member) monthly bike usage", x="Months", y="number of trips", fill="Customer type") +
+  geom_col(width = 0.6, position = position_dodge(width=0.6)) +
+  facet_wrap(~member_casual, Q1234_2020_cleaned1$date) 
+  # + scale_x_continuous(guide = guide_axis(n.dodge=2))
+  
+![Plot Casual VS Member monthly bike usage](/Volumes/UDISK/2020 R/Rplot02.png)
+
+### Popular Riding Hours
+ggplot(data = Q1234_2020_cleaned1) +
+  geom_bar(mapping = aes(x = hour(started_at), fill= member_casual)) +
+  facet_wrap(~member_casual) +
+  theme(axis.text.x = element_text(angle = 0)) +
+  labs(title="Divvy ride trip hourly trend for Casual and Member rider",
+       x="Hours",
+       y="Number of Rides")
+
+ggplot(data = Q1234_2020_cleaned1) +
+  geom_freqpoly(mapping = aes(x = hour(started_at), color= member_casual)) +
+  facet_wrap(~Day_of_week) + 
+  theme(axis.text.x = element_text(angle = 45)) +
+  labs(title="Hourly distribution of casual rides and member rides for each day of week",
+       x="Hours",
+       y="Number of Rides")
+
+hour <- c("0:00", "1:00", "2:00", "3:00", "4:00", "6:00", "7:00",
+"8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00","15:00",
+"16:00", "17:00", "18:00", "19:00", "20:00", "21:00",
+"22:00","23:00") # Can't seem to visualise this format!
+
+![Plot Popular Riding Hour](/Volumes/UDISK/2020 R/Rplot Time.png)
+
+### Popular Routes
+ Q1234_2020_cleaned1 %>% 
+             filter(member_casual == "member" & start_station_name != "missing") %>% 
+             group_by(start_station_name) %>%
+             summarise(ride_freq = n()) %>% 
+             arrange(-ride_freq) %>% 
+             head(10) %>% 
+             ggplot(aes(x = ride_freq, y= reorder(start_station_name, ride_freq), fill= start_station_name)) +
+             #geom_col(alpha =.3) +
+            geom_col(color="black") +
+             theme(text = element_text(size = 10)) +
+             labs(title = "Popular Stations in 2020", subtitle = "route taken", y="Start Station")
+             
+![Plot Popular Route](/Volumes/UDISK/2020 R/Rplot03.png)
+
+### Bike preferences by Casual and Member
+ Q1234_2020_cleaned1 %>% 
+             group_by(rideable_type, member_casual) %>% 
+             summarise(ride_freq = n(), .groups = "drop") %>% 
+             arrange(ride_freq) %>% 
+             ggplot(aes(reorder(rideable_type, ride_freq), ride_freq, fill=member_casual)) +
+             geom_bar(stat ="identity") +
+             labs(title = "Bike Preferences by customer type", 
+                  x = "Bike Type", y="Ride Freq", fill="customer type") +
+             theme(text= element_text(size=10)) +
+             scale_y_continuous() + scale_fill_manual(values = c("casual" = "#e28743", "member" = "#2596be"))
+             
+![Plot Bike Preferences](/Volumes/UDISK/2020 R/Rplot04.png)
+             
+### Conclusion:
+From our plots, we know a little bit more about our customer. These data allow us to read the decision made by Cyclistic's customers. They've preferred docked bike most of the time, probably because of the easy access and usage. For classic bike and electric bike, it is less profitable, we need more data on this. Surprisingly,  bike usage dropped in April 2020, we need more data on the weather changes and new wave of Covid-19 outbreak. 
+
+There were many limitations in this analysis, such as the time constraint and also the massive 9 years worth of data. We were not able to fully understand the whole situation, hence this particular analysis is only good for sampling and archiving, the wealth of information if uncovered will surely provide better insight for targeting specific users, that includes diving into sensitive data that got hidden away. 
+
+# ACT
+
+* Financial incentives for casual riders during working days, a campaign is needed to entice casual riders opting for healthier and cost effective lifestyle. They can even save time avoiding unnecessary slow traffic. 
+* Automatic upgrade to membership for free, casual riders exceeding a certain number of usage could enjoy this.
+* A weekly pass, monthly pass, annual pass should be priced so that the option with longer usage become cheapest, this might entice and allow money conscious casual riders to gear towards better options.
+* More perks should be given to members, such as getting discounted coffee or breakfast at popular routes.
+* Social media is a great tool, influencer on YouTube, Instagram, Facebook, could be featured to promote better lifestyle through bike share
+
+### Resources
+Github, RStudio, Kaggle, Medium, rpubs, Stackoverflow
+
+### What's next?
+* Merge data from 2013 to 2022 for more comprehensive insight.
+
+* Use Google Map to pin all the stations, the color intensity of each individual pin should indicate the volume of usage.  
+
+### Personal note:
+
+ ![Chicago docked bike 2022](/Users/AldrichPinso/Desktop/Screenshot 2022-10-24 at 4.57.58 PM.png)
+
+I'm a big supporter of city bikes, I have enjoyed my ride around Chicago city although the weather was brutally cold especially for a tropical North-Bornean.
+
+Being a bike enthusiast, it was definitely a win-win being able to solve real world problem related to my interest. I'm very exited to get onto the next data related task! 
