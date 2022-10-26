@@ -1,0 +1,50 @@
+SELECT COUNT(member_casual)  
+FROM `goo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q2_APR` 
+WHERE member_casual = "member"
+
+SELECT COUNT(member_casual)  
+FROM `goo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q2_APR` 
+WHERE member_casual = "casual"
+
+drop table Cyclistic_bikeTrips_2020;
+
+CREATE OR REPLACE TABLE Cyclistic_bikeTrips_2020 as 
+(SELECT *
+FROM goo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q2_APR
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q2_MAY
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q2_JUN
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q3_JUL
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_missing_AUG_and_DEC
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q3_SEP
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q4_OCT
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q4_NOV
+UNION ALL
+
+SELECT *
+FROM ggoo-analytic2022-364508.Cyclistic_bikeTrips_2020.Cyclistic_2020_Q4_DEC
+);
