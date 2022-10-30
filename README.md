@@ -78,11 +78,17 @@ Find the population for casuals (calculate mean, midpoint, average, min, max)
 
 # SHARE
 Plot distribution total population (Membership VS Casual)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot.png
 Casual VS Member weekly bike usage
+https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot01.png
 Casual VS Member monthly bike usage
+https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot02.png
 Popular Riding Hours
+https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot%20Time.png
 Popular Routes
+https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot03.png
 Bike preferences by Casual and Member
+https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot04.png
 
 # ACT
 
