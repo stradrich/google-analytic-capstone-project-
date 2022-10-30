@@ -28,6 +28,7 @@ Please note that this timeline is just a reference. WHO hasn't publicly announce
 Due to time constraint and minimizing the chances of data overloading and crashing, I will only analyse the year of 2020.
 
 R Attempt 1 (Trying to merge Data from 2013 to 2022, failed)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-13%20at%201.11.11%20PM.png
 
 https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-13%20at%201.20.19%20PM.png
@@ -42,9 +43,11 @@ In this section, I will merge data, change data type, create new columns, etc.
 This is part of my workflow. I will be displaying the data types and internal structure as a reference to identify anomalies or commonalities vice versa.
 
 For SQL exploration through Google bigquery sandbox, please use this link
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8faaa1b92453f8169bc2b6d6394e94c1461fed8d/SQL
 
 Excel/ Googlesheet Attempt 1 (file too large, failed to upload)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-01%20at%201.03.53%20AM.png
 
 SQL Attempt 1 (file too large, failed to upload)
