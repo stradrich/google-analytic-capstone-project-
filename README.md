@@ -36,6 +36,8 @@ In this section, I will merge data, change data type, create new columns, etc.
 
 This is part of my workflow. I will be displaying the data types and internal structure as a reference to identify anomalies or commonalities vice versa. 
 
+For SQL exploration, please use this [https://github.com/stradrich/google-analytic-capstone-project-/blob/8faaa1b92453f8169bc2b6d6394e94c1461fed8d/SQL]
+
 
 # ANALYZE
 Overall population stastistic (such as mean, midpoint, average, min, max)                            
