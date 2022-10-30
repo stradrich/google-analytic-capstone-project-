@@ -27,6 +27,10 @@ Please note that this timeline is just a reference. WHO hasn't publicly announce
 
 Due to time constraint and minimizing the chances of data overloading and crashing, I will only analyse the year of 2020.
 
+R Attempt 1 (Trying to merge Data from 2013 to 2022, failed)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-13%20at%201.11.11%20PM.png
+https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-13%20at%201.20.19%20PM.png
+
 
 # PROCESS
 
@@ -94,6 +98,11 @@ https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be3
 
 Bike preferences by Casual and Member
 https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot04.png
+
+Tableau Attempt 1 (Cleaned Data from R failed to upload on Tableau for further visualisation)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-30%20at%2011.10.51%20PM.png
+https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-30%20at%2011.11.03%20PM.png
+https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-30%20at%2011.11.18%20PM.png
 
 # ACT
 
