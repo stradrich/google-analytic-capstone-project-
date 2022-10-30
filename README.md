@@ -34,9 +34,37 @@ I have chosen R programming as my main tool for many reasons. Personally, I'd lo
 
 In this section, I will merge data, change data type, create new columns, etc.
 
-This is part of my workflow. I will be displaying the data types and internal structure as a reference to identify anomalies or commonalities vice versa. 
+This is part of my workflow. I will be displaying the data types and internal structure as a reference to identify anomalies or commonalities vice versa.
 
-For SQL exploration, please use this [https://github.com/stradrich/google-analytic-capstone-project-/blob/8faaa1b92453f8169bc2b6d6394e94c1461fed8d/SQL]
+For SQL exploration through Google bigquery sandbox, please use this link https://github.com/stradrich/google-analytic-capstone-project-/blob/8faaa1b92453f8169bc2b6d6394e94c1461fed8d/SQL
+
+Excel/ Googlesheet Attempt 1 (file too large, failed to upload)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-01%20at%201.03.53%20AM.png
+
+SQL Attempt 1 (file too large, failed to upload)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-01%20at%201.00.09%20AM.png
+
+SQL Attempt 2 (file too large, failed to upload)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%207.33.19%20PM.png
+
+SQL Attempt 3 (trying to merge all 2020 files, code failed)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%207.36.08%20PM.png
+
+SQL Attempt 4 (calculate Q1 docked bike usage)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%208.50.23%20PM.png
+
+
+SQL Attempt 5 (Total stations)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%208.51.56%20PM.png
+
+SQL Attempt 6 (casual population in Q1)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%208.59.32%20PM.png
+
+SQL Attempt 7 (member population in Q1)
+https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%208.59.38%20PM.png
+
+
+
 
 
 # ANALYZE
