@@ -51,29 +51,33 @@ Excel/ Googlesheet Attempt 1 (file too large, failed to upload)
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-01%20at%201.03.53%20AM.png
 
 SQL Attempt 1 (file too large, failed to upload)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-01%20at%201.00.09%20AM.png
 
 SQL Attempt 2 (file too large, failed to upload)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%207.33.19%20PM.png
 
 SQL Attempt 3 (trying to merge all 2020 files, code failed)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%207.36.08%20PM.png
 
 SQL Attempt 4 (calculate Q1 docked bike usage)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%208.50.23%20PM.png
 
 
 SQL Attempt 5 (Total stations)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%208.51.56%20PM.png
 
 SQL Attempt 6 (casual population in Q1)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%208.59.32%20PM.png
 
 SQL Attempt 7 (member population in Q1)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/8d65edb31f0c0d7cbfec0d8f6513d7f330a4dc57/Screenshot%202022-10-26%20at%208.59.38%20PM.png
-
-
-
 
 
 # ANALYZE
@@ -87,24 +91,31 @@ Find the population for casuals (calculate mean, midpoint, average, min, max)
 
 # SHARE
 Plot distribution total population (Membership VS Casual)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot.png
 
 Casual VS Member weekly bike usage
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot01.png
 
 Casual VS Member monthly bike usage
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot02.png
 
 Popular Riding Hours
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot%20Time.png
 
 Popular Routes
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot03.png
 
 Bike preferences by Casual and Member
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/2eaec0d26be32b5929bf70bc1891965092cc1210/Rplot04.png
 
 Tableau Attempt 1 (Cleaned Data from R failed to upload on Tableau for further visualisation)
+
 https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-30%20at%2011.10.51%20PM.png
 
 https://github.com/stradrich/google-analytic-capstone-project-/blob/afa32abd17e031b4ed6c7af614fe0cdd805d3d78/Screenshot%202022-10-30%20at%2011.11.03%20PM.png
