@@ -4,6 +4,7 @@
 # ASK
 
 Introduction
+
 This is part of Google Data Analytics capstone project, sponsored by *Grow with Google Malaysia*. By solving real life situation, I'm able to experience the work of a data analyst and at the same time building a career portfolio.
 
 In this case study, we need to answer business questions posed by Cyclistic bike-share company. I'm assigned to work with the director of marketing and analytics, Lily Moreno and Cyclistic marketing analytics team. To confirm Madam Moreno's hypothesis, which is to maximize the number of annual membership, more data driven insights are required. A new design for marketing strategy, which is to convert casual riders into annual memberships, can only commence after achieving positive approval by Cyclisitc executives team.
