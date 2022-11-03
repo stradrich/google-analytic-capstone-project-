@@ -1,5 +1,6 @@
 # google-analytic-capstone-project-
 
+You can check out my portfolio here too, https://sites.google.com/view/aldrich-pinso/home?authuser=0
 
 # ASK
 
